@@ -1,0 +1,18 @@
+.navbar-content {
+  display: flex;
+  align-items: center;
+
+  mat-toolbar {
+    height: 6rem;
+  }
+
+  &__logo {
+    flex: 0 0 20%;
+
+  }
+
+  &__menus {
+    flex: 0 0 60%;
+
+  }
+}
