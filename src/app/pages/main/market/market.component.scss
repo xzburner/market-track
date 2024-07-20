@@ -1,9 +1,12 @@
 .market {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 
   &__menus {
     margin-top: 3rem;
-    
+    width: 90%;
+    display: flex;
+    justify-content: center;
   }
 }

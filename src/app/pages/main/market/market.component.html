@@ -5,12 +5,14 @@
         <a mat-tab-link (click)="activeLink = link" [active]="activeLink == link"> {{link}} </a>
       }
     </nav>
-    <mat-tab-nav-panel #tabPanel>
-      @if (activeLink === 'Índices') {
-        <ng-container>
-          <app-indexes></app-indexes>
-        </ng-container>
-      }
-    </mat-tab-nav-panel>
+    <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+  </div>
+
+  <div class="market__content">
+    @if (activeLink === 'Índices') {
+      <ng-container>
+        <app-indexes></app-indexes>
+      </ng-container>
+    }
   </div>
 </div>
