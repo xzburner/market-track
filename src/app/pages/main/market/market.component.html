@@ -2,16 +2,31 @@
   <div class="market__menus">
     <nav mat-tab-nav-bar [tabPanel]="tabPanel">
       @for (link of links; track link) {
-        <a mat-tab-link (click)="activeLink = link" [active]="activeLink == link"> {{link}} </a>
+        <a mat-tab-link (click)="title.set(link)" [active]="title() == link"> {{link}} </a>
       }
     </nav>
     <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
   </div>
 
   <div class="market__content">
-    @if (activeLink === 'Índices') {
+    @if (title() === 'Índices') {
       <ng-container>
-        <app-indexes></app-indexes>
+        <app-principal-chart [title]="title()"></app-principal-chart>
+      </ng-container>
+    }
+    @if (title() === 'Ações do Brasil') {
+      <ng-container>
+        <app-principal-chart [title]="title()" />
+      </ng-container>
+    }
+    @if (title() === 'Ações Mundiais') {
+      <ng-container>
+        <app-principal-chart [title]="title()" />
+      </ng-container>
+    }
+    @if (title() === 'Cripto') {
+      <ng-container>
+        <app-principal-chart [title]="title()" />
       </ng-container>
     }
   </div>
