@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MatButton, MatFabButton, MatIconButton } from '@angular/material/button';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { MatToolbar } from '@angular/material/toolbar';
 
@@ -10,7 +12,11 @@ import { MatToolbar } from '@angular/material/toolbar';
     MatToolbar,
     MatFormField,
     MatInput,
-    MatLabel
+    MatLabel,
+    MatButton,
+    MatIcon,
+    MatIconButton,
+    MatFabButton,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'

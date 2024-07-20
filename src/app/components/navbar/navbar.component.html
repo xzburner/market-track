@@ -4,10 +4,42 @@
       <span>Market Track</span>
     </div>
     <div class="navbar-content__menus">
-      <mat-form-field class="example-full-width">
-        <mat-label>Pesquisa</mat-label>
-        <input matInput>
-      </mat-form-field>
+      <div class="navbar-content__menus__search">
+        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+          <mat-label>Pesquisa</mat-label>
+          <input matInput type="search">
+        </mat-form-field>
+      </div>
+      <div class="navbar-content__menus__menu">
+        <button mat-button>Mercado</button>
+      </div>
+      <div class="navbar-content__menus__menu">
+        <button mat-button>Notícias</button>
+      </div>
+      <div class="navbar-content__menus__menu">
+        <button mat-button>Corretoras</button>
+      </div>
+      <div class="navbar-content__menus__menu">
+        <button mat-button>Produtos</button>
+      </div>
+      <div class="navbar-content__menus__menu">
+        <button mat-button>Comunidade</button>
+      </div>
+    </div>
+    <div class="navbar-content__options">
+      <div class="navbar-content__options__option">
+        <button mat-fab>
+          <mat-icon>language</mat-icon>
+        </button>
+      </div>
+      <div class="navbar-content__options__option">
+        <button mat-fab>
+          <mat-icon>person_pin</mat-icon>
+        </button>
+      </div>
+      <div class="navbar-content__options__start">
+        <button mat-raised-button color="primary">Investir</button>
+      </div>
     </div>
   </mat-toolbar>
 </div>
