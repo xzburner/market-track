@@ -6,26 +6,6 @@
       font-size: 20px;
     }
   }
-
-  &__options {
-    display: flex;
-    overflow-x: auto;
-    white-space: nowrap;
-    max-width: 100%;
-    height: 5rem;
-
-    &__option {
-      width: 20%;
-      height: 4rem;
-      border-radius: 1rem;
-      flex: 0 0 auto;
-      margin: 0 10px;
-    }
-  }
-
-  &__chart {
-    margin-top: 3rem;
-  }
 }
 
 .principal-chart__options::-webkit-scrollbar {

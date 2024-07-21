@@ -1,10 +1,10 @@
-import { Component, signal, Signal } from '@angular/core';
-import { createSignal } from '@angular/core/primitives/signals';
+import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatMenu, MatMenuContent, MatMenuItem } from '@angular/material/menu';
 import { MatTab, MatTabGroup, MatTabLink, MatTabNav, MatTabNavPanel } from '@angular/material/tabs';
 import { RouterOutlet } from '@angular/router';
 import { PrincipalChartComponent } from '../../../components/principal-chart/principal-chart.component';
+import { TrackModel } from '../../../models/track.model';
 
 @Component({
   selector: 'app-market',
@@ -23,10 +23,25 @@ import { PrincipalChartComponent } from '../../../components/principal-chart/pri
     PrincipalChartComponent,
   ],
   templateUrl: './market.component.html',
-  styleUrl: './market.component.scss'
+  styleUrl: './market.component.scss',
 })
-export class MarketComponent {
+export class MarketComponent implements OnInit {
 
-  links = ['Índices', 'Ações do Brasil', 'Ações Mundiais', 'Cripto', 'Títulos do Governo', 'Economia'];
-  title = signal(this.links[1]);
+  constructor() {}
+
+  public indexes: WritableSignal<TrackModel[]> = signal([
+      {
+        symbol: '^BVSP',
+        title: 'IBovespa',
+        logo: 'asstes/logos/ibovespa.png',
+      },
+    ],
+  );
+
+  public ngOnInit() {
+    console.log(this.indexes);
+  }
+
+  public links = ['Índices', 'Ações do Brasil', 'Ações Mundiais', 'Cripto', 'Títulos do Governo', 'Economia'];
+  public title = signal(this.links[0]);
 }

@@ -5,28 +5,11 @@
     </h2>
   </div>
 
-  <div class="principal-chart__options">
-    <div class="principal-chart__options__option">
-
-    </div>
-    <div class="principal-chart__options__option">
-
-    </div>
-    <div class="principal-chart__options__option">
-
-    </div>
-    <div class="principal-chart__options__option">
-
-    </div>
-    <div class="principal-chart__options__option">
-
-    </div>
-    <div class="principal-chart__options__option">
-
-    </div>
+  <div>
+    <app-options [items]="values()"></app-options>
   </div>
 
-  <div class="principal-chart__chart">
+  <div class="mt-5">
     <canvasjs-chart [options]="chartOptions()"></canvasjs-chart>
   </div>
 </div>

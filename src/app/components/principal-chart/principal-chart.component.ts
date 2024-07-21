@@ -1,12 +1,15 @@
-import { Component, input, OnChanges, OnInit, signal, SimpleChanges } from '@angular/core';
-import { CanvasJS, CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { Component, Input, input, InputSignal, OnInit, signal } from '@angular/core';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { TrackModel } from '../../models/track.model';
 import { YahooFinanceService } from '../../services/yahoo-finance.service';
+import { OptionsComponent } from './options/options.component';
 
 @Component({
   selector: 'app-principal-chart',
   standalone: true,
   imports: [
     CanvasJSAngularChartsModule,
+    OptionsComponent,
   ],
   templateUrl: './principal-chart.component.html',
   styleUrl: './principal-chart.component.scss'
@@ -17,22 +20,23 @@ export class PrincipalChartComponent implements OnInit {
     private yahooFinanceService: YahooFinanceService,
   ) {}
 
+  public values: InputSignal<TrackModel[]> = input.required();
   public title = input.required();
-  public values = input();
   public chartOptions = signal({});
 
   public ngOnInit() {
-    this.getHistoric()
+    this.getCompleteHistoric();
+    console.log(this.values);
   }
 
-  getHistoric() {
+  getCompleteHistoric() {
     this.yahooFinanceService.getHistoricalData('^BVSP', '2020-01-01', '2023-07-01').subscribe({
       next: data => {
         const dataPoints = data.chart.result[0].timestamp.map((timestamp: number, index: number) => ({
           x: new Date(timestamp * 1000),
           y: data.chart.result[0].indicators.quote[0].close[index]
         }));
-        
+
         this.renderChart(dataPoints);
 
       },

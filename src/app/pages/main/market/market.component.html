@@ -11,23 +11,23 @@
   <div class="market__content">
     @if (title() === 'Índices') {
       <ng-container>
-        <app-principal-chart [title]="title()"></app-principal-chart>
+        <app-principal-chart [title]="title()" [values]="indexes()"></app-principal-chart>
       </ng-container>
     }
-    @if (title() === 'Ações do Brasil') {
-      <ng-container>
-        <app-principal-chart [title]="title()" />
-      </ng-container>
-    }
-    @if (title() === 'Ações Mundiais') {
-      <ng-container>
-        <app-principal-chart [title]="title()" />
-      </ng-container>
-    }
-    @if (title() === 'Cripto') {
-      <ng-container>
-        <app-principal-chart [title]="title()" />
-      </ng-container>
-    }
+<!--    @if (title() === 'Ações do Brasil') {-->
+<!--      <ng-container>-->
+<!--        <app-principal-chart [title]="title()" />-->
+<!--      </ng-container>-->
+<!--    }-->
+<!--    @if (title() === 'Ações Mundiais') {-->
+<!--      <ng-container>-->
+<!--        <app-principal-chart [title]="title()" />-->
+<!--      </ng-container>-->
+<!--    }-->
+<!--    @if (title() === 'Cripto') {-->
+<!--      <ng-container>-->
+<!--        <app-principal-chart [title]="title()" />-->
+<!--      </ng-container>-->
+<!--    }-->
   </div>
 </div>

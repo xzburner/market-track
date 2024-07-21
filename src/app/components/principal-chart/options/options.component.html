@@ -1,0 +1,22 @@
+<div class="options">
+  @for (option of items; track option.symbol) {
+    <div class="options__option">
+      <div class="options__option__logo">
+        <img src="assets/logos/ibovespa.png">
+      </div>
+      <div class="option-content">
+        <div class="content__title">
+          <span>{{ option.title }}</span>
+        </div>
+        <div class="d-flex">
+          <div class="option-content__last-quote">
+            <span>{{ option.lastQuote | currency: 'BRL' }}</span>
+          </div>
+          <div class="option-content__percent">
+            <span>{{ option.percentChange }}%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
