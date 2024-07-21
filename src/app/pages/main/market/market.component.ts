@@ -47,6 +47,52 @@ export class MarketComponent {
     ],
   );
 
+  public BrazilActions: WritableSignal<TrackModel[]> = signal([
+      {
+        symbol: 'PETR4.SA',
+        title: 'Petrobras',
+        logo: 'assets/logos/petrobras.png',
+        percentChange: 0,
+        lastQuote: 0,
+      },
+      {
+        symbol: 'VALE',
+        title: 'Vale',
+        logo: 'assets/logos/vale.png',
+        percentChange: 0,
+        lastQuote: 0,
+      },
+      {
+        symbol: 'ITUB',
+        title: 'Itaú',
+        logo: 'assets/logos/itau.png',
+        percentChange: 0,
+        lastQuote: 0,
+      },
+      {
+        symbol: 'BBD',
+        title: 'Bradesco',
+        logo: 'assets/logos/bradesco.png',
+        percentChange: 0,
+        lastQuote: 0,
+      },
+      {
+        symbol: 'SUZB3.SA',
+        title: 'Suzano',
+        logo: 'assets/logos/suzano.png',
+        percentChange: 0,
+        lastQuote: 0,
+      },
+      {
+        symbol: 'ABEV3.SA',
+        title: 'Ambev',
+        logo: 'assets/logos/ambev.jpg',
+        percentChange: 0,
+        lastQuote: 0,
+      },
+    ],
+  );
+
   public links = ['Índices', 'Ações do Brasil', 'Ações Mundiais', 'Cripto', 'Títulos do Governo', 'Economia'];
   public title = signal(this.links[0]);
 }
