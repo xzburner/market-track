@@ -5,13 +5,13 @@
     </div>
     <div class="navbar-content__menus">
       <div class="navbar-content__menus__search">
-        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-form-field appearance="outline" subscriptSizing="dynamic" >
           <mat-label>Pesquisa</mat-label>
           <input matInput type="search">
         </mat-form-field>
       </div>
-      <div class="navbar-content__menus__menu">
-        <button mat-button>Mercado</button>
+      <div class="navbar-content__menus__menu" [class.active]="page() === 'market'">
+        <button mat-button (click)="navigateByUrl('market')">Mercado</button>
       </div>
       <div class="navbar-content__menus__menu">
         <button mat-button>Notícias</button>
@@ -28,13 +28,13 @@
     </div>
     <div class="navbar-content__options">
       <div class="navbar-content__options__option">
-        <button mat-fab>
+        <button mat-button>
           <mat-icon>language</mat-icon>
         </button>
       </div>
       <div class="navbar-content__options__option">
-        <button mat-fab>
-          <mat-icon>person_pin</mat-icon>
+        <button mat-button>
+          <mat-icon>person</mat-icon>
         </button>
       </div>
       <div class="navbar-content__options__start">

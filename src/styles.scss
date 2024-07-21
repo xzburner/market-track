@@ -11,3 +11,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .positive {
   color: #089981;
 }
+
+.mdc-text-field--outlined {
+  --mdc-outlined-text-field-container-shape: 20px !important;
+}

@@ -94,5 +94,5 @@ export class MarketComponent {
   );
 
   public links = ['Índices', 'Ações do Brasil', 'Ações Mundiais', 'Cripto', 'Títulos do Governo', 'Economia'];
-  public title = signal(this.links[0]);
+  public title = signal(this.links[1]);
 }

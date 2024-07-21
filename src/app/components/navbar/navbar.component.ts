@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { MatButton, MatFabButton, MatIconButton } from '@angular/material/button';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { MatToolbar } from '@angular/material/toolbar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -23,4 +24,12 @@ import { MatToolbar } from '@angular/material/toolbar';
 })
 export class NavbarComponent {
 
+  constructor(private readonly route: Router) {}
+
+  public page = signal('market');
+
+  navigateByUrl(page: string) {
+    this.route.navigateByUrl(page);
+    this.page.set(page);
+  }
 }

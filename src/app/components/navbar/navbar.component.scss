@@ -7,7 +7,8 @@
   }
 
   &__logo {
-    flex: 0 0 15%;
+    flex: 0 0 13%;
+
     span {
       font-size: 20px;
     }
@@ -20,9 +21,6 @@
     justify-content: space-between;
 
     &__search {
-      mat-form-field {
-        border-radius: 15px;
-      }
     }
 
     &__menu {
@@ -43,6 +41,7 @@
       button {
         width: 4rem;
         height: 4rem;
+
         mat-icon {
           font-size: 2rem;
           height: 2rem;
@@ -54,9 +53,23 @@
     &__start {
       button {
         width: 8rem;
-        height: 4rem;
+        height: 3rem;
         font-size: 20px;
+        border-radius: 50px;
       }
     }
   }
+}
+
+.active {
+  border-bottom: 2px solid var(--primary);
+
+  button {
+    color: var(--primary);
+  }
+}
+
+.mat-mdc-form-field-infix {
+  min-height: 1px;
+  max-height: 10px;
 }
