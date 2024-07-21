@@ -25,12 +25,11 @@ export class PrincipalChartComponent implements OnInit {
   public chartOptions = signal({});
 
   public ngOnInit() {
-    this.getCompleteHistoric();
-    console.log(this.values);
+    this.getCompleteHistoric(this.values()[0].symbol);
   }
 
-  getCompleteHistoric() {
-    this.yahooFinanceService.getHistoricalData('^BVSP', '2020-01-01', '2023-07-01').subscribe({
+  getCompleteHistoric(symbol: string) {
+    this.yahooFinanceService.getHistoricalData(symbol, '2020-01-01', '2023-07-01').subscribe({
       next: data => {
         const dataPoints = data.chart.result[0].timestamp.map((timestamp: number, index: number) => ({
           x: new Date(timestamp * 1000),

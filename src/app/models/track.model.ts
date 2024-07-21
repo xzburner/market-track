@@ -3,5 +3,5 @@ export interface TrackModel {
   title: string,
   logo: string,
   lastQuote?: number,
-  percentChange?: string,
+  percentChange: number,
 }

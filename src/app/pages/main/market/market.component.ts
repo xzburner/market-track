@@ -34,6 +34,8 @@ export class MarketComponent implements OnInit {
         symbol: '^BVSP',
         title: 'IBovespa',
         logo: 'asstes/logos/ibovespa.png',
+        percentChange: 0,
+        lastQuote: 0,
       },
     ],
   );

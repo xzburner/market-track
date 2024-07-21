@@ -1,5 +1,5 @@
 import { CurrencyPipe, PercentPipe } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, input, Input, InputSignal, OnInit } from '@angular/core';
 import { TrackModel } from '../../../models/track.model';
 import { YahooFinanceService } from '../../../services/yahoo-finance.service';
 
@@ -15,8 +15,7 @@ import { YahooFinanceService } from '../../../services/yahoo-finance.service';
 })
 export class OptionsComponent implements OnInit {
 
-  @Input()
-  items?: TrackModel[];
+  item: InputSignal<TrackModel> = input.required();
 
   constructor(private readonly yahooFinanceService: YahooFinanceService) {}
 
@@ -31,28 +30,31 @@ export class OptionsComponent implements OnInit {
     pastDate.setMonth(now.getMonth() - 1);
     const startDate = pastDate.toISOString().split('T')[0];
 
-    this.items?.forEach(item => {
-      this.yahooFinanceService.getHistoricalData(item.symbol, startDate, endDate).subscribe({
-        next: data => {
-          const timestamps = data.chart.result[0].timestamp;
-          const closePrices = data.chart.result[0].indicators.quote[0].close;
+    this.yahooFinanceService.getHistoricalData(this.item().symbol, startDate, endDate).subscribe({
+      next: data => {
+        const timestamps = data.chart.result[0].timestamp;
+        const closePrices = data.chart.result[0].indicators.quote[0].close;
 
-          if (timestamps.length < 2) {
-            console.warn('Não há dados suficientes para calcular a variação.');
-            return;
-          }
+        if (timestamps.length < 2) {
+          console.warn('Não há dados suficientes para calcular a variação.');
+          return;
+        }
 
-          const latestIndex = timestamps.length - 1;
-          const previousQuote = closePrices[latestIndex - 1];
-          item.lastQuote = closePrices[latestIndex];
+        const latestIndex = timestamps.length - 1;
+        const previousQuote = closePrices[latestIndex - 1];
+        this.item().lastQuote = closePrices[latestIndex];
 
-          if (item.lastQuote)
-            item.percentChange = (((item.lastQuote - previousQuote) / previousQuote) * 100).toFixed(2);
-        },
-        error: err => {
-          console.error('Erro ao buscar dados', err);
-        },
-      });
+        const item = this.item();
+
+        if (item && item.lastQuote !== undefined && previousQuote !== undefined) {
+          item.percentChange = Number(
+            (((item.lastQuote - previousQuote) / previousQuote) * 100).toFixed(2)
+          );
+        }
+      },
+      error: err => {
+        console.error('Erro ao buscar dados', err);
+      },
     });
   }
 }
