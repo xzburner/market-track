@@ -5,13 +5,15 @@
     </h2>
   </div>
 
-  @for (value of values(); track value.symbol) {
-    <div>
-      <app-options [item]="value" (click)="this.getCompleteHistoric(value.symbol)"></app-options>
-    </div>
-  }
+  <div class="principal-chart__options">
+    @for (value of values(); track value.symbol) {
+      <div class="principal-chart__options__option">
+        <app-options [item]="value" (click)="this.getCompleteHistoric(value.symbol)" [activeItem]="activeSymbol"></app-options>
+      </div>
+    }
+  </div>
 
   <div class="mt-5">
-    <canvasjs-chart [options]="chartOptions()"></canvasjs-chart>
+    <div id="chartContainer"></div>
   </div>
 </div>

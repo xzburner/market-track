@@ -25,7 +25,7 @@ import { TrackModel } from '../../../models/track.model';
   templateUrl: './market.component.html',
   styleUrl: './market.component.scss',
 })
-export class MarketComponent implements OnInit {
+export class MarketComponent {
 
   constructor() {}
 
@@ -33,16 +33,19 @@ export class MarketComponent implements OnInit {
       {
         symbol: '^BVSP',
         title: 'IBovespa',
-        logo: 'asstes/logos/ibovespa.png',
+        logo: 'assets/logos/ibovespa.png',
+        percentChange: 0,
+        lastQuote: 0,
+      },
+      {
+        symbol: '^IBX50',
+        title: 'IBrx 50',
+        logo: 'assets/logos/ibrx-50.png',
         percentChange: 0,
         lastQuote: 0,
       },
     ],
   );
-
-  public ngOnInit() {
-    console.log(this.indexes);
-  }
 
   public links = ['Índices', 'Ações do Brasil', 'Ações Mundiais', 'Cripto', 'Títulos do Governo', 'Economia'];
   public title = signal(this.links[0]);

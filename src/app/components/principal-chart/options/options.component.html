@@ -1,20 +1,19 @@
-<div class="options">
-  <div class="options__option">
-    <div class="options__option__logo">
-      <img src="assets/logos/ibovespa.png">
+<div class="option" (click)="selectedItem.emit()" [class.option--active]="activeItem() == item().symbol">
+  <div class="option__logo">
+    <img [src]="item().logo">
+  </div>
+  <div class="option-content">
+    <div class="content__title">
+      <span>{{ item().title }}</span>
     </div>
-    <div class="option-content">
-      <div class="content__title">
-        <span>{{ item().title }}</span>
+    <div class="d-flex">
+      <div class="option-content__last-quote">
+        <span>{{ item().lastQuote | currency: 'BRL' }}</span>
       </div>
-      <div class="d-flex">
-        <div class="option-content__last-quote">
-          <span>{{ item().lastQuote | currency: 'BRL' }}</span>
-        </div>
-        <div class="option-content__percent">
-          <span [class]="item().percentChange > 0 ? 'positive' : 'negative'">{{ item().percentChange }}%</span>
-        </div>
+      <div class="option-content__percent">
+        <span [class]="item().percentChange > 0 ? 'positive' : 'negative'">{{ item().percentChange }}%</span>
       </div>
     </div>
   </div>
 </div>
+

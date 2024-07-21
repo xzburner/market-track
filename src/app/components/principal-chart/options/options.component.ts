@@ -1,5 +1,5 @@
 import { CurrencyPipe, PercentPipe } from '@angular/common';
-import { Component, input, Input, InputSignal, OnInit } from '@angular/core';
+import { Component, input, InputSignal, OnInit, output } from '@angular/core';
 import { TrackModel } from '../../../models/track.model';
 import { YahooFinanceService } from '../../../services/yahoo-finance.service';
 
@@ -16,6 +16,8 @@ import { YahooFinanceService } from '../../../services/yahoo-finance.service';
 export class OptionsComponent implements OnInit {
 
   item: InputSignal<TrackModel> = input.required();
+  activeItem: InputSignal<string> = input.required();
+  selectedItem = output();
 
   constructor(private readonly yahooFinanceService: YahooFinanceService) {}
 
@@ -42,7 +44,7 @@ export class OptionsComponent implements OnInit {
 
         const latestIndex = timestamps.length - 1;
         const previousQuote = closePrices[latestIndex - 1];
-        this.item().lastQuote = closePrices[latestIndex];
+        this.item().lastQuote = data.chart.result[0].meta.regularMarketPrice;
 
         const item = this.item();
 
