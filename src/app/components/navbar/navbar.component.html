@@ -13,32 +13,32 @@
       <div class="navbar-content__menus__menu" [class.active]="page() === 'market'">
         <button mat-button (click)="navigateByUrl('market')">Mercado</button>
       </div>
-      <div class="navbar-content__menus__menu">
+      <div class="navbar-content__menus__menu" (click)="onDevService.openDialog()">
         <button mat-button>Notícias</button>
       </div>
-      <div class="navbar-content__menus__menu">
+      <div class="navbar-content__menus__menu" (click)="onDevService.openDialog()">
         <button mat-button>Corretoras</button>
       </div>
-      <div class="navbar-content__menus__menu">
+      <div class="navbar-content__menus__menu" (click)="onDevService.openDialog()">
         <button mat-button>Produtos</button>
       </div>
-      <div class="navbar-content__menus__menu">
+      <div class="navbar-content__menus__menu" (click)="onDevService.openDialog()">
         <button mat-button>Comunidade</button>
       </div>
     </div>
     <div class="navbar-content__options">
       <div class="navbar-content__options__option">
-        <button mat-button>
+        <button mat-button (click)="onDevService.openDialog()">
           <mat-icon>language</mat-icon>
         </button>
       </div>
       <div class="navbar-content__options__option">
-        <button mat-button>
+        <button mat-button (click)="onDevService.openDialog()">
           <mat-icon>person</mat-icon>
         </button>
       </div>
       <div class="navbar-content__options__start">
-        <button mat-raised-button color="primary">Investir</button>
+        <button mat-raised-button color="primary" (click)="onDevService.openDialog()">Investir</button>
       </div>
     </div>
   </mat-toolbar>

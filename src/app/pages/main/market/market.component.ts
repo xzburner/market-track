@@ -3,8 +3,10 @@ import { MatButton } from '@angular/material/button';
 import { MatMenu, MatMenuContent, MatMenuItem } from '@angular/material/menu';
 import { MatTab, MatTabGroup, MatTabLink, MatTabNav, MatTabNavPanel } from '@angular/material/tabs';
 import { RouterOutlet } from '@angular/router';
+import { OnDevComponent } from '../../../components/on-dev/on-dev.component';
 import { PrincipalChartComponent } from '../../../components/principal-chart/principal-chart.component';
 import { TrackModel } from '../../../models/track.model';
+import { OnDevService } from '../../../services/on-dev.service';
 
 @Component({
   selector: 'app-market',
@@ -21,13 +23,14 @@ import { TrackModel } from '../../../models/track.model';
     MatTabNavPanel,
     RouterOutlet,
     PrincipalChartComponent,
+    OnDevComponent,
   ],
   templateUrl: './market.component.html',
   styleUrl: './market.component.scss',
 })
 export class MarketComponent {
 
-  constructor() {}
+  constructor(private readonly onDevService: OnDevService) {}
 
   public indexes: WritableSignal<TrackModel[]> = signal([
       {
@@ -95,4 +98,11 @@ export class MarketComponent {
 
   public links = ['Índices', 'Ações do Brasil', 'Ações Mundiais', 'Cripto', 'Títulos do Governo', 'Economia'];
   public title = signal(this.links[1]);
+
+  public openOption(link: string) {
+    if (link == 'Índices' || link == 'Ações do Brasil')
+      this.title.set(link);
+    else
+      this.onDevService.openDialog();
+  }
 }

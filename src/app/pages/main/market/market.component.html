@@ -2,7 +2,7 @@
   <div class="market__menus">
     <nav mat-tab-nav-bar [tabPanel]="tabPanel">
       @for (link of links; track link) {
-        <a mat-tab-link (click)="title.set(link)" [active]="title() == link"> {{link}} </a>
+        <a mat-tab-link (click)="openOption(link)" [active]="title() == link"> {{link}} </a>
       }
     </nav>
     <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
@@ -19,15 +19,10 @@
         <app-principal-chart [title]="title()" [values]="BrazilActions()" />
       </ng-container>
     }
-<!--    @if (title() === 'Ações Mundiais') {-->
-<!--      <ng-container>-->
-<!--        <app-principal-chart [title]="title()" />-->
-<!--      </ng-container>-->
-<!--    }-->
-<!--    @if (title() === 'Cripto') {-->
-<!--      <ng-container>-->
-<!--        <app-principal-chart [title]="title()" />-->
-<!--      </ng-container>-->
-<!--    }-->
+    @if (title() === 'Ações Mundiais') {
+      <ng-container>
+        <app-on-dev />
+      </ng-container>
+    }
   </div>
 </div>

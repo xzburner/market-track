@@ -5,6 +5,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { MatToolbar } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
+import { OnDevService } from '../../services/on-dev.service';
 
 @Component({
   selector: 'app-navbar',
@@ -25,7 +26,10 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 
-  constructor(private readonly route: Router) {}
+  constructor(
+    private readonly route: Router,
+    protected readonly onDevService: OnDevService,
+    ) {}
 
   public page = signal('market');
 
