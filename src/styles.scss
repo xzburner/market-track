@@ -1,8 +1,8 @@
 @import "assets/colors/color-vairables";
+@import "assets/fonts/typography";
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+body *:not(mat-icon) { margin: 0; font-family: 'Montserrat', sans-serif !important; font-weight: 500 }
 
 .negative {
   color: #f23645;

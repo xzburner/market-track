@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { MatButton, MatFabButton, MatIconButton } from '@angular/material/button';
+import { MatButton, MatFabButton, MatIconButton, MatMiniFabButton } from '@angular/material/button';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
     MatIcon,
     MatIconButton,
     MatFabButton,
+    MatMiniFabButton,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'

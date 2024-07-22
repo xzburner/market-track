@@ -4,6 +4,7 @@
 
   mat-toolbar {
     height: 6rem;
+    background-color: #ffffff;
   }
 
   &__logo {
@@ -11,6 +12,7 @@
 
     span {
       font-size: 20px;
+      font-weight: bold;
     }
   }
 
@@ -25,7 +27,7 @@
 
     &__menu {
       button {
-        font-size: 20px;
+        font-size: 18px;
       }
     }
   }
