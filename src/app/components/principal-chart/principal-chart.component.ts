@@ -34,7 +34,6 @@ export class PrincipalChartComponent implements OnInit {
     const endDate = now.toISOString().split('T')[0];
     this.yahooFinanceService.getHistoricalData(symbol, '2023-01-01', endDate).subscribe({
       next: data => {
-        console.log(data);
         const dataPoints = data.chart.result[0].timestamp.map((timestamp: number, index: number) => ({
           x: new Date(timestamp * 1000),
           y: data.chart.result[0].indicators.quote[0].close[index],
