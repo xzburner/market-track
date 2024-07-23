@@ -9,7 +9,7 @@ export class YahooFinanceService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = 'http://localhost:3000/historical-data';
+  private apiUrl = 'http://18.230.187.246:3000/historical-data';
 
   getHistoricalData(symbol: string, startDate: string, endDate: string): Observable<any> {
     console.log(symbol);
