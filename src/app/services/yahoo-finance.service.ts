@@ -9,16 +9,15 @@ export class YahooFinanceService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = 'https://query1.finance.yahoo.com/v8/finance/chart/';
+  private apiUrl = 'http://18.230.187.246:3000/historical-data';
 
   getHistoricalData(symbol: string, startDate: string, endDate: string): Observable<any> {
     const params = new HttpParams()
-      .set('period1', Math.floor(new Date(startDate).getTime() / 1000).toString())
-      .set('period2', Math.floor(new Date(endDate).getTime() / 1000).toString())
-      .set('interval', '1d')
-      .set('events', 'history');
+      .set('symbol', symbol)
+      .set('startDate', startDate)
+      .set('endDate', endDate);
 
-    return this.http.get(`${this.apiUrl}${symbol}`, { params }).pipe(
+    return this.http.get(this.apiUrl, { params }).pipe(
       catchError(error => {
         console.error('Error fetching data', error);
         return throwError(() => new Error('Erro ao buscar dados do Yahoo Finance'));
