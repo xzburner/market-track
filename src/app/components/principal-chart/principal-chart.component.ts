@@ -1,4 +1,6 @@
+import { NgIf } from '@angular/common';
 import { Component, Input, input, InputSignal, OnInit, signal } from '@angular/core';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { CanvasJS, CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { TrackModel } from '../../models/track.model';
 import { YahooFinanceService } from '../../services/yahoo-finance.service';
@@ -10,6 +12,8 @@ import { OptionsComponent } from './options/options.component';
   imports: [
     CanvasJSAngularChartsModule,
     OptionsComponent,
+    MatProgressSpinner,
+    NgIf,
   ],
   templateUrl: './principal-chart.component.html',
   styleUrl: './principal-chart.component.scss',
@@ -21,8 +25,9 @@ export class PrincipalChartComponent implements OnInit {
   ) {}
 
   public values: InputSignal<TrackModel[]> = input.required();
-  public title = input.required();
-  public activeSymbol = '';
+  public title: InputSignal<string> = input.required();
+  public activeSymbol: string = '';
+  public loading: boolean = false;
 
   public ngOnInit() {
     this.getCompleteHistoric(this.values()[0].symbol);
@@ -32,15 +37,15 @@ export class PrincipalChartComponent implements OnInit {
     this.activeSymbol = symbol;
     const now = new Date();
     const endDate = now.toISOString().split('T')[0];
+    this.loading = true;
     this.yahooFinanceService.getHistoricalData(symbol, '2023-01-01', endDate).subscribe({
       next: data => {
         const dataPoints = data.chart.result[0].timestamp.map((timestamp: number, index: number) => ({
           x: new Date(timestamp * 1000),
           y: data.chart.result[0].indicators.quote[0].close[index],
         }));
-
+        this.loading = false;
         this.renderChart(dataPoints);
-
       },
       error: err => {
         console.error('Error fetching data', err);
