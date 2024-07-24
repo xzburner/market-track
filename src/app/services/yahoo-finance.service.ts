@@ -9,7 +9,7 @@ export class YahooFinanceService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = 'https://xpp4s7eh4gybxrkzcslxuypqxu0vxrxj.lambda-url.sa-east-1.on.aws/historical-data';
+  private apiUrl = 'https://market-track-api.onrender.com/historical-data';
 
   getHistoricalData(symbol: string, startDate: string, endDate: string): Observable<any> {
     const params = new HttpParams()
